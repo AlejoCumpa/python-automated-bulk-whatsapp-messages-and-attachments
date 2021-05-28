@@ -2,9 +2,6 @@
 
 It is a python script that sends WhatsApp message automatically from WhatsApp web application. It can be configured to send advertising messages to customers. It read data from an excel sheet and send a configured message to people.
 
-## Demo
-* Video clip on youtube of the script execution. https://youtu.be/NcWXpsczl3c
-
 ## Prerequisites
 
 In order to run the python script, your system must have the following programs/packages installed and the contact number should be saved in your phone (You can use bulk contact number saving procedure of email). There is a way without saving the contact number but has the limitation to send the attachment.
@@ -27,7 +24,8 @@ Note: If you wish to send an image instead of text you can write attachment sele
 ## Code
 ```
 # Program to send bulk customized message through WhatsApp web application
-# Author @inforkgodara
+# Original Author @inforkgodara
+# Attachments by @acumpab
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
