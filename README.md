@@ -14,6 +14,7 @@ In order to run the python script, your system must have the following programs/
 * Pandas : Run in command prompt **pip install pandas**
 * Xlrd : Run in command prompt **pip install xlrd**
 * Selenium: Run in command prompt **pip install selenium** 
+* PyAutoGUI: Run in command prompt **pip install PyAutoGUI** 
 
 ## Approach
 * User scans web QR code to log in into the WhatsApp web application.
@@ -35,6 +36,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 import pandas
 import time
+import pyautogui
 
 # Load the chrome driver
 driver = webdriver.Chrome()
@@ -75,6 +77,32 @@ for column in excel_data['Name'].tolist():
         actions.send_keys(message)
         actions.send_keys(Keys.ENTER)
         actions.perform()
+        
+        #OPTIONAL
+        #This Code allows you to Paste some image in current clipboard
+        mensajeBox = driver.find_element_by_css_selector('._2x4bz > div:nth-child(2)')
+        mensajeBox.send_keys(Keys.CONTROL, 'v')
+        time.sleep(2)
+        botonSend = driver.find_element_by_css_selector('.SncVf')
+        botonSend.click()
+        time.sleep(2)
+        
+        
+        #Attach Image or Video
+        btnAttach = driver.find_element_by_xpath('/html/body/div/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div[1]/div[2]/div/div')
+        btnAttach.click()
+        time.sleep(1)
+        
+        btnImageVideo = driver.find_element_by_xpath('/html/body/div/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div[1]/div[2]/div/span/div[1]/div/ul/li[1]/button/span')
+        btnImageVideo.click()
+        time.sleep(5)
+        
+        pyautogui.write('<PATH_TO_FILE>')
+        pyautogui.press('enter')
+        time.sleep(10)
+        botonSend = driver.find_element_by_css_selector('.SncVf')
+        botonSend.click()
+        time.sleep(2)
 
 # Close Chrome browser
 driver.quit()
